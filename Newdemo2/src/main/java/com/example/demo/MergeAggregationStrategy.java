@@ -25,6 +25,7 @@ public class MergeAggregationStrategy implements AggregationStrategy  {
 	     // return old as this is the one that has all the orders gathered until now
 	     return oldExchange; 
 	}
+	
 
 
 }

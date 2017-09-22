@@ -7,19 +7,25 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
-public class Producer {
 
-	     public static final String QUEUE_NAME = "abc";
+	
+	 public class Producer {
+	     public static final String QUEUE_NAME = "reg";
 	     public static Connection connection;
 
 	     public void setupConnection() throws IOException, TimeoutException {
-	         ConnectionFactory factory = new ConnectionFactory();
-	         factory.setHost("local");
+		        ConnectionFactory factory = new ConnectionFactory();
+		        factory.setHost("192.168.99.100");
+		        factory.setUsername("guest");
+		        factory.setPassword("guest");
 
-	         connection = factory.newConnection();
-	         Channel channel = connection.createChannel();
-	         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-	     }
+		        connection = factory.newConnection();
+		        Channel channel = connection.createChannel();
+		        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+		        channel.queueBind("reg", "amq.direct", " ");
+		    }
+	
 	}
+	
 
 
