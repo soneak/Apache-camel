@@ -24,9 +24,9 @@ public class Newdemo2Application {
         		.convertBodyTo(String.class)
         		.aggregate(simple("${file:ext} == 'txt'"), new MergeAggregationStrategy()) 
         		.completionSize(2)
-        		.to("rabbitmq://localhost:5672/amq.direct");
+        		//.to("rabbitmq://localhost:5672/amq.direct");
         		//.to("rabbitmq://localhost:5672/amq.direct?username=guest&password=guest&autoDelete=false&queue=reg");
-            	//.to("rabbitmq://localhost:5672/MyExchange?username=guest&password=guest&autoDelete=false&routingKey=key&queue=Que");
+            	.to("rabbitmq://localhost:5672/amq.direct?username=guest&password=guest&autoDelete=false&routingKey=key&queue=reg");
                
         		//.to("file:D:\\two");
         	}

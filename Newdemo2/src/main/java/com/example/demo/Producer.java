@@ -22,7 +22,9 @@ import com.rabbitmq.client.ConnectionFactory;
 		        connection = factory.newConnection();
 		        Channel channel = connection.createChannel();
 		        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-		        channel.queueBind("reg", "amq.direct", " ");
+		        
+		        channel.queueBind("reg", "amq.direct", "key");
+		        channel.basicPublish("", QUEUE_NAME, null,null  );
 		    }
 	
 	}
