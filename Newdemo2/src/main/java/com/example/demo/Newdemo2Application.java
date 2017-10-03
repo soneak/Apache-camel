@@ -6,7 +6,7 @@ import org.apache.camel.impl.DefaultCamelContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+
 public class Newdemo2Application {
 
 	public static void main(String[] args)throws Exception {
@@ -16,7 +16,7 @@ public class Newdemo2Application {
         queueProd.setupConnection();
         System.out.println(queueProd.toString());
 
-        CamelContext context = new DefaultCamelContext();
+        CamelContext context = new DefaultCamelContext();//creating container
 
         context.addRoutes(new RouteBuilder() {
         	public void configure() throws Exception {
