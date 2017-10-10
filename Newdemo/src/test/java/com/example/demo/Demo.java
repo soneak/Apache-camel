@@ -1,43 +1,27 @@
 package com.example.demo;
 
-
-
-
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-
-import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.test.junit4.CamelSpringTestSupport;
+import org.junit.Rule;
 import org.junit.Test;
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import org.junit.rules.TemporaryFolder;
 
-public class Demo extends CamelSpringTestSupport  {
-
-	/*@Test
-	public void contextLoads() {
-		File origPath = new File("/inputFolder/");
-		File newPath = new File("/outputFolder/");
-		for (File file : origPath.listFiles()) {
-		    assertTrue(new File(newPath, file.getName()).exists());
-		
-		    }
-		
-}}*/
-	@Override
-	protected AbstractApplicationContext createApplicationContext() {
-		return new ClassPathXmlApplicationContext("camel-context.xml");
-	}
+public class Demo {
 	
-	@Test
-	public void testPayloadIsReached() 
-	   throws InterruptedException {
-	 MockEndpoint mockOut = getMockEndpoint("mock:out");
-	 mockOut.setExpectedMessageCount(1);
-	 template.sendBody("direct:in", "this is test");
+	@Rule
+	public TemporaryFolder folder = new TemporaryFolder();
 
-	 assertMockEndpointsSatisfied();
+	@Test
+	public void testtask() throws Exception {
+	   
+	    //final File output = folder.newFile("task.txt");
+	    
+	    File file = new File("c://outputFolder");
+	    final File expected = new File("task.txt");
+		assertTrue(file.exists());
+	  
 	}
+
 }
